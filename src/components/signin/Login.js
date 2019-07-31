@@ -47,8 +47,10 @@ class Login extends Component {
                        value={this.state.password} 
                        required 
                     />
-                    <Button type="submit">SignIn</Button>
-                    <Button onClick={signInwWithGoogle}>Login with Google</Button>
+                    <div className="buttons">
+                        <Button type="submit">SignIn</Button>
+                        <Button onClick={signInwWithGoogle} isGoogleSignin>Login with Google</Button>
+                    </div>
                 </form>
             </div>
         )
