@@ -1,10 +1,12 @@
 import React from 'react';
+import './header.scss';
+
 import {connect} from 'react-redux';
 import {NavLink, Link} from 'react-router-dom';
 import {ReactComponent as Logo} from '../../assets/crown.svg';
 import {auth} from '../../firebase/firebase.utils';
-import './header.scss';
 import CartIcon from '../cart-icon/Cart-icon';
+import CartDropdown from '../cart-dropdown/Cart-dropdown';
 
 
 const Header = ({currentUser}) => {
@@ -29,6 +31,7 @@ const Header = ({currentUser}) => {
                }
                <CartIcon/>
            </div>
+           <CartDropdown/>
         </div>
     )
 }
