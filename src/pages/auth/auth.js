@@ -1,7 +1,7 @@
 import React from 'react';
-import Login from '../signin/Login';
+import Login from '../../components/signin/Login';
+import Register from '../../components/signup/Register';
 import './auth.scss';
-import Register from '../signup/Register';
 
 const Auth = () => {
     return (
