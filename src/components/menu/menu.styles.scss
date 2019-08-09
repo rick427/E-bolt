@@ -11,6 +11,7 @@
 
     &:hover{
       cursor: pointer;
+      overflow: hidden;
 
       & .background-image{
         transform: scale(1.1);
