@@ -7,7 +7,7 @@ import {auth} from '../../firebase/firebase.utils';
 import {createStructuredSelector} from 'reselect';
 import {selectCartHidden} from '../../redux/cart/cart-selector';
 import {selectCurrentUser} from '../../redux/user/user-selector';
-import {HeaderContainer, LogoContainer, OptionsContainer, OptionDiv, OptionLink} from './header.styles';
+import {HeaderContainer, LogoContainer, OptionsContainer, OptionLink} from './header.styles';
 import CartIcon from '../cart-icon/Cart-icon';
 import CartDropdown from '../cart-dropdown/Cart-dropdown';
 
@@ -28,7 +28,7 @@ const Header = ({currentUser, hidden}) => {
                </OptionLink>
                {
                    currentUser ?
-                   <OptionDiv onClick={() => auth.signOut()}>LOG OUT</OptionDiv>
+                   <OptionLink as='div' onClick={() => auth.signOut()}>LOG OUT</OptionLink>
                    :
                    <OptionLink className="option" to="/signin">LOGIN</OptionLink>
                }
