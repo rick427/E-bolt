@@ -10,14 +10,12 @@ import Header from './components/header/Header';
 import Auth from './pages/auth/auth';
 import Checkout from './pages/checkout/Checkout';
 
-import {auth} from './firebase/firebase.utils';
-import {createUserProfileDocument} from './firebase/firebase.utils';
+import {auth, createUserProfileDocument} from './firebase/firebase.utils';
 import {setCurrentUser} from './redux/user/user-actions';
 import {selectCurrentUser} from './redux/user/user-selector';
 
 
 class App extends React.Component{
-
   unsubscribeFromAuth = null
 
   componentDidMount(){
@@ -37,7 +35,7 @@ class App extends React.Component{
         });
       }
       else{
-        setCurrentUser(userAuth)
+        setCurrentUser(userAuth);
       };
     })
   }
@@ -70,7 +68,7 @@ class App extends React.Component{
 }
 
 const mapStateToProps = createStructuredSelector ({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
 })
 
 const mapDispatchToProps = dispatch => ({
