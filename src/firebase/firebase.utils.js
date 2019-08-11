@@ -69,6 +69,15 @@ export const convertCollectionsToSnapshot = collections => {
   },{});
 };
 
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged(userAuth => {
+      unsubscribe();
+      resolve(userAuth);
+    }, reject)
+  })
+}
+
 //initial firebase to config object
 firebase.initializeApp(config);
 
