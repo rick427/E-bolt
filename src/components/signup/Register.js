@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {auth, createUserProfileDocument} from '../../firebase/firebase.utils';
+import {connect} from 'react-redux';
+import {signUpStart} from '../../redux/user/user-actions';
 import './register.scss';
 import FormInput from '../formInput/FormInput';
 import Button from '../button/Button';
@@ -17,26 +18,15 @@ class Register extends Component {
 
     handleSubmit = async e => {
         e.preventDefault();
+        const {signUpStart} = this.props;
+        const {email, displayName,password, confirmPassword} = this.state;
 
-        const {displayName, email, password, confirmPassword} = this.state;
         if(password !== confirmPassword){
             alert("Passwords do not match");
             return;
-        }
+        }    
 
-        try {
-            const {user} = await auth.createUserWithEmailAndPassword(email, password);
-            createUserProfileDocument(user, {displayName});
-
-            this.setState({
-                displayName: '',
-                email: '',
-                password: '',
-                confirmPassword: ''
-            })
-        } catch (error) {
-            console.error(error);
-        }
+        signUpStart({displayName, email, password})
     };
 
     handleChange = e => {
@@ -45,6 +35,7 @@ class Register extends Component {
     };
 
     render() {
+        
         const {displayName, email, password, confirmPassword} = this.state;
         return (
             <div className="sign-up">
@@ -90,4 +81,8 @@ class Register extends Component {
     }
 }
 
-export default Register
+const mapDispatchToProps = dispatch => ({
+    signUpStart: userCredentials => dispatch(signUpStart(userCredentials))
+})
+
+export default connect(null, mapDispatchToProps)(Register)
